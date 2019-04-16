@@ -6,6 +6,8 @@ using UnityEditor;
 [CustomEditor(typeof(Actor))]
 public class ActorEditor : Editor
 {
+    bool showHealth = false;
+    bool showCombat = false;
     public override void OnInspectorGUI()
     {
         Actor myActor = target as Actor;
@@ -18,9 +20,8 @@ public class ActorEditor : Editor
         int unitInitiative = myActor.initiative;
         int hitChance = myActor.percentChanceToHit;
 
-        bool showHealth = true;
-        bool toggleHealth = true;
-        bool showCombat = true;
+        
+        bool toggleHealth = true;      
         bool showActionOptions = true;
 
         string health = "Health";

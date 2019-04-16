@@ -11,7 +11,9 @@ public class Actor : MonoBehaviour {
     {
         AnyAvailable,
         HighestHealth,
-        StrongestAttack
+        StrongestAttack,
+        GreatestThreat,
+        BoardPosition
     }
     public TargetSelectionRule targetSelectionRule;
 
@@ -150,6 +152,24 @@ public class Actor : MonoBehaviour {
                     if (availableTargets[i].damage == highestAttack)
                         highestAttackIndexes.Add(i);
                 return availableTargets[highestAttackIndexes[Random.Range(0, highestAttackIndexes.Count)]];
+            case TargetSelectionRule.GreatestThreat:
+                int greatestDamPot = 0;
+                int greatestHealPot = 0;
+                for (int i = 0; i < availableTargets.Count; i++)
+                    if ((availableTargets[i].damage * availableTargets.Count) > greatestDamPot && actionTarget == ActionTarget.AllEnemy)
+                        greatestDamPot = (availableTargets[i].damage * availableTargets.Count);
+                    else if ((availableTargets[i].damage * availableTargets.Count) > greatestDamPot && actionTarget == ActionTarget.AllAlly)
+                        greatestHealPot = (availableTargets[i].damage * availableTargets.Count);
+                List<int> greatestDamPotIndexes = new List<int>();
+                List<int> greatestHealPotIndexes = new List<int>();
+                for (int i = 0; i < availableTargets.Count; i++)
+                    if (availableTargets[i].damage == greatestDamPot && actionTarget == ActionTarget.AllEnemy || actionTarget == ActionTarget.AllEnemy)
+                        greatestDamPotIndexes.Add(i);
+                    else if ((availableTargets[i].damage == greatestDamPot && actionTarget == ActionTarget.AllAlly || actionTarget == ActionTarget.AnyAlly))
+                        greatestHealPotIndexes.Add(i);
+                return availableTargets[greatestDamPotIndexes[Random.Range(0, greatestDamPotIndexes.Count)]];
+            
+
         }
         return availableTargets[Random.Range(0, availableTargets.Count)];
     }
