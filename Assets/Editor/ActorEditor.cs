@@ -8,12 +8,14 @@ public class ActorEditor : Editor
 {
     bool showHealth = false;
     bool showCombat = false;
+    bool showActionOptions = false;
+
+    
     public override void OnInspectorGUI()
     {
         Actor myActor = target as Actor;
 
-        Actor.ActionTarget actionTarget;
-
+       
         int unitHealth = myActor.hitPoints;
         int maxUnitHealth = myActor.maxHitPoints;
         int unitDamage = myActor.damage;
@@ -22,7 +24,7 @@ public class ActorEditor : Editor
 
         
         bool toggleHealth = true;      
-        bool showActionOptions = true;
+        
 
         string health = "Health";
         string combat = "Combat";
@@ -33,7 +35,7 @@ public class ActorEditor : Editor
         string percent = "Percent Chance to Hit";
         string options = "Action Options";
 
-        
+        myActor.actorName = EditorGUILayout.TextField("Unit Name", myActor.actorName);
         showHealth = EditorGUILayout.Foldout(showHealth, health, toggleHealth);
         if (showHealth)
         {
@@ -60,11 +62,21 @@ public class ActorEditor : Editor
 
             myActor.percentChanceToHit = EditorGUILayout.IntSlider(percent, hitChance, 0, 100);
             showActionOptions = EditorGUILayout.Foldout(showActionOptions, options);
+          
+
             if (showActionOptions)
-            {
-                actionTarget = (Actor.ActionTarget)EditorGUILayout.EnumFlagsField(actionTarget);
+            {            
+                myActor.actionTarget = (Actor.ActionTarget)EditorGUILayout.EnumPopup("Select a target", myActor.actionTarget);
+                myActor.actionEffect = (Actor.ActionEffect)EditorGUILayout.EnumPopup("Select an effect", myActor.actionEffect);
+                myActor.actionEffectSource = (Actor.ActionSource)EditorGUILayout.EnumPopup("Select an effect source", myActor.actionEffectSource);
+                
             }
+            myActor.targetSelectionRule = (Actor.TargetSelectionRule)EditorGUILayout.EnumPopup("Select an AI type", myActor.targetSelectionRule);
         }
+        
+
+
+        myActor.boardPosition = (Actor.Position)EditorGUILayout.EnumPopup("Select a board position", myActor.boardPosition);
             
     }
 }

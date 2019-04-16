@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIInspector : ScriptableObject
+[SerializeField]
+public class AIInspector
 {
     public enum HighestLowest
     {
