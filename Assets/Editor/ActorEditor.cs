@@ -73,9 +73,9 @@ public class ActorEditor : Editor
             }
             myActor.targetSelectionRule = (Actor.TargetSelectionRule)EditorGUILayout.EnumPopup("Select an AI type", myActor.targetSelectionRule);
         }
+
+        EditorGUILayout.LabelField("Current Target: ", myActor.targetName);
         
-
-
         myActor.boardPosition = (Actor.Position)EditorGUILayout.EnumPopup("Select a board position", myActor.boardPosition);
             
     }

@@ -90,6 +90,12 @@ public class Actor : MonoBehaviour {
 
     public Position boardPosition;
 
+    public Actor target;
+
+    public string targetName;
+
+    public Position targetPosition;
+
     // TODO: Provide some means of configuring how the target is selected
 
     #endregion
@@ -143,43 +149,56 @@ public class Actor : MonoBehaviour {
                 for (int i = 0; i < availableTargets.Count; i++)
                     if (availableTargets[i].hitPoints == highestHealth)
                         highestHealthIndexes.Add(i);
-                return availableTargets[highestHealthIndexes[Random.Range(0, highestHealthIndexes.Count)]];
+                currentTarget = availableTargets[highestHealthIndexes[Random.Range(0, highestHealthIndexes.Count)]];
+                targetName = currentTarget.name;
+                targetPosition = currentTarget.boardPosition;
+                return currentTarget;
+
             case TargetSelectionRule.StrongestAttack:
                 int highestAttack = 0;
-                for (int i = 0; i < availableTargets.Count; i++)
+                for (int i = 0; i < availableTargets.Count; i++)                
                     if (availableTargets[i].damage > highestAttack)
-                        highestAttack = availableTargets[i].damage;
+                        highestAttack = availableTargets[i].damage;               
                 List<int> highestAttackIndexes = new List<int>();
                 for (int i = 0; i < availableTargets.Count; i++)
                     if (availableTargets[i].damage == highestAttack)
                         highestAttackIndexes.Add(i);
-                return availableTargets[highestAttackIndexes[Random.Range(0, highestAttackIndexes.Count)]];
+                currentTarget = availableTargets[highestAttackIndexes[Random.Range(0, highestAttackIndexes.Count)]];
+                targetName = currentTarget.name;
+                targetPosition = currentTarget.boardPosition;
+                return currentTarget;
+
             case TargetSelectionRule.GreatestDamPot:
-                int greatestDamPot = 0;
-                
+                int greatestDamPot = 0;                            
                 for (int i = 0; i < availableTargets.Count; i++)
                     if ((availableTargets[i].damage * availableTargets.Count) > greatestDamPot && actionTarget == ActionTarget.AllEnemy)
                         greatestDamPot = (availableTargets[i].damage * availableTargets.Count);
                      
                 List<int> greatestDamPotIndexes = new List<int>();               
                 for (int i = 0; i < availableTargets.Count; i++)
-                    if (availableTargets[i].damage == greatestDamPot && actionTarget == ActionTarget.AllEnemy || actionTarget == ActionTarget.AllEnemy)                    
-                        greatestDamPotIndexes.Add(i); 
-                
-                return availableTargets[greatestDamPotIndexes[Random.Range(0, greatestDamPotIndexes.Count)]];
+                    if (availableTargets[i].damage == greatestDamPot && actionTarget == ActionTarget.AllEnemy )                    
+                        greatestDamPotIndexes.Add(i);
+                currentTarget = availableTargets[greatestDamPotIndexes[Random.Range(0, greatestDamPotIndexes.Count)]];
+                targetName = currentTarget.name;
+                targetPosition = currentTarget.boardPosition;
+                return currentTarget;
+                 
             case TargetSelectionRule.GreatestHealPot:
                 int greatestHealPot = 0;
-
                 for (int i = 0; i < availableTargets.Count; i++)
+                {
                     if ((availableTargets[i].damage * availableTargets.Count) > greatestHealPot && actionTarget == ActionTarget.AllAlly)
                         greatestHealPot = (availableTargets[i].damage * availableTargets.Count);
-
+                    
+                }
+                
                 List<int> greatestHealPotIndexes = new List<int>();
                 for (int i = 0; i < availableTargets.Count; i++)
-                    if ((availableTargets[i].damage == greatestHealPot && actionTarget == ActionTarget.AllAlly || actionTarget == ActionTarget.AnyAlly))                    
+                    if (availableTargets[i].damage == greatestHealPot && actionTarget == ActionTarget.AllAlly)                    
                         greatestHealPotIndexes.Add(i);
-
-                return availableTargets[greatestHealPotIndexes[Random.Range(0, greatestHealPotIndexes.Count)]];
+                target = availableTargets[greatestHealPotIndexes[Random.Range(0, greatestHealPotIndexes.Count)]];
+                targetName = currentTarget.name;
+                return target;
                     
             case TargetSelectionRule.LowestHealth:
                 int lowestHealth = 0;
@@ -190,7 +209,9 @@ public class Actor : MonoBehaviour {
                 for(int i = 0; i < availableTargets.Count; i++)
                     if (availableTargets[i].hitPoints > lowestHealth)
                         lowestHealthIndexes.Add(i);
-                return availableTargets[lowestHealthIndexes[Random.Range(0, lowestHealthIndexes.Count)]];
+                currentTarget = availableTargets[lowestHealthIndexes[Random.Range(0, lowestHealthIndexes.Count)]];
+                targetName = currentTarget.name;
+                return currentTarget;
             
 
         }
