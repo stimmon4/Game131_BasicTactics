@@ -75,6 +75,7 @@ public class ActorEditor : Editor
         }
 
         EditorGUILayout.LabelField("Current Target: ", myActor.targetName);
+        EditorGUILayout.LabelField("Target's Position: ", myActor.targetPosition.ToString());
         
         myActor.boardPosition = (Actor.Position)EditorGUILayout.EnumPopup("Select a board position", myActor.boardPosition);
             

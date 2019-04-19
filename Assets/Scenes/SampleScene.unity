@@ -389,7 +389,8 @@ MonoBehaviour:
   immunities: 02000000
   percentChanceToHit: 75
   boardPosition: 9
-  targetName: left_fighter_1 (3)
+  target: {fileID: 1021131940}
+  targetName: left_fighter_1
   targetPosition: 3
 --- !u!1 &151510684
 GameObject:
@@ -720,7 +721,7 @@ MonoBehaviour:
   stateLabel: {fileID: 611929592}
   effectLabel: {fileID: 0}
   stateOffset: {x: -7.62, y: 0, z: -2.07}
-  myActor: {fileID: 0}
+  myActor: {fileID: 1021131940}
 --- !u!1 &276110191 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1329420496833700, guid: d5f15a8cc98f92a49ace4045e990c06f,
@@ -742,7 +743,7 @@ MonoBehaviour:
   stateLabel: {fileID: 1750059255}
   effectLabel: {fileID: 0}
   stateOffset: {x: 2.19, y: 0, z: -1.56}
-  myActor: {fileID: 0}
+  myActor: {fileID: 994158188}
 --- !u!1 &305221841 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1329420496833700, guid: d5f15a8cc98f92a49ace4045e990c06f,
@@ -786,7 +787,7 @@ MonoBehaviour:
   stateLabel: {fileID: 1118048225}
   effectLabel: {fileID: 0}
   stateOffset: {x: -6.93, y: 0, z: -1.4}
-  myActor: {fileID: 0}
+  myActor: {fileID: 1990472554}
 --- !u!1 &449214082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,7 +1132,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 'Sink
+
+    100/100'
 --- !u!222 &611929593
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1466,18 +1469,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSelectionRule: 0
-  currentTarget: {fileID: 1021131940}
+  currentTarget: {fileID: 994158188}
   actorName: Knight
   maxHitPoints: 100
   hitPoints: 100
   initiative: 50
-  actionTarget: 4
+  actionTarget: 2
   damage: 25
-  actionEffect: 0
+  actionEffect: 2
   actionEffectSource: 0
   immunities: 
   percentChanceToHit: 75
   boardPosition: 3
+  target: {fileID: 0}
   targetName: right_fighter_1
   targetPosition: 10
 --- !u!1001 &985104821
@@ -1553,7 +1557,7 @@ GameObject:
   - component: {fileID: 994158189}
   - component: {fileID: 994158188}
   m_Layer: 0
-  m_Name: left_fighter_1 (1)
+  m_Name: Spungus
   m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1572,18 +1576,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSelectionRule: 0
-  currentTarget: {fileID: 1021131940}
-  actorName: Knight
+  currentTarget: {fileID: 1990472554}
+  actorName: Spungus
   maxHitPoints: 100
-  hitPoints: 100
+  hitPoints: 10
   initiative: 50
   actionTarget: 4
   damage: 25
-  actionEffect: 0
+  actionEffect: 2
   actionEffectSource: 0
   immunities: 
   percentChanceToHit: 75
-  boardPosition: 3
+  boardPosition: 4
+  target: {fileID: 0}
   targetName: Scrungus
   targetPosition: 10
 --- !u!65 &994158189
@@ -1672,7 +1677,7 @@ GameObject:
   - component: {fileID: 1021131941}
   - component: {fileID: 1021131940}
   m_Layer: 0
-  m_Name: left_fighter_1 (3)
+  m_Name: Sink
   m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1692,7 +1697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSelectionRule: 1
   currentTarget: {fileID: 1492513599}
-  actorName: Knight
+  actorName: Sink
   maxHitPoints: 100
   hitPoints: 100
   initiative: 50
@@ -1702,7 +1707,8 @@ MonoBehaviour:
   actionEffectSource: 0
   immunities: 
   percentChanceToHit: 75
-  boardPosition: 3
+  boardPosition: 0
+  target: {fileID: 1492513599}
   targetName: Scrungus
   targetPosition: 10
 --- !u!65 &1021131941
@@ -1902,7 +1908,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 'Chungus
+
+    100/100'
 --- !u!222 &1118048226
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2254,21 +2262,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94b9ab40cc19b445b7fe0d6d591ec0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSelectionRule: 4
-  currentTarget: {fileID: 916292714}
+  targetSelectionRule: 5
+  currentTarget: {fileID: 994158188}
   actorName: Scrungus
   maxHitPoints: 100
   hitPoints: 20
   initiative: 50
-  actionTarget: 3
+  actionTarget: 1
   damage: 50
   actionEffect: 0
   actionEffectSource: 0
   immunities: 02000000
   percentChanceToHit: 75
   boardPosition: 10
-  targetName: left_fighter_1
-  targetPosition: 3
+  target: {fileID: 994158188}
+  targetName: Spungus
+  targetPosition: 1
 --- !u!65 &1492513600
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2601,7 +2610,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 'Spungus
+
+    10/100'
 --- !u!222 &1750059256
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2828,7 +2839,7 @@ GameObject:
   - component: {fileID: 1990472555}
   - component: {fileID: 1990472554}
   m_Layer: 0
-  m_Name: left_fighter_1 (2)
+  m_Name: Chungus
   m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2848,17 +2859,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSelectionRule: 2
   currentTarget: {fileID: 147497486}
-  actorName: Knight
+  actorName: Chungus
   maxHitPoints: 100
   hitPoints: 100
   initiative: 50
-  actionTarget: 1
-  damage: 25
+  actionTarget: 3
+  damage: 70
   actionEffect: 0
   actionEffectSource: 0
   immunities: 
   percentChanceToHit: 75
-  boardPosition: 3
+  boardPosition: 1
+  target: {fileID: 147497486}
   targetName: right_fighter_1
   targetPosition: 9
 --- !u!65 &1990472555
